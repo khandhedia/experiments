@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<employees>
+	<employee id="10">
+		<firstName>Nirav</firstName>
+		<lastName>Khandhedia</lastName>
+		<location>Rajkot</location>
+	</employee>
+</employees>
