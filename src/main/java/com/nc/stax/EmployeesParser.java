@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -11,6 +12,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLEventWriter;
@@ -23,6 +27,15 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class EmployeesParser {
 
@@ -189,6 +202,72 @@ public class EmployeesParser {
 		xmlEventWriter.add(endElement);
 		lineBreak(1);
 	}
+	
+	//XPath query/expression evaluation is possible using DOM.
+	//One needs to create DOMBuilderFactory to get DocumentBuilder object which would parse the XML and get a DOM object.
+	//DOM parser takes input as InputStream objects - which can be achieved by FileInputStream implementation.
+	//
+	//String query needs to be passed to XPath compilation which would result in XPathExpression.
+	//XPathExpression can be evaluated and multiple types of results can be expected according to the parameter given in evaluate() method.
+	//To Generate the XPath one needs to use XPathFactory.
+	
+	public void query(String xmlPath) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException
+	{
+		//DOMParsing of XML - Start
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		
+		File file = new File(xmlPath);
+		InputStream is = new FileInputStream(file);
+		Document document = documentBuilder.parse(is);
+		//DOMParsing of XML - End
+		
+		//XPath Creation - Start
+		XPathFactory xPathFactory = XPathFactory.newInstance();
+		XPath xPath = xPathFactory.newXPath();
+		//XPath Creation - End
+
+		
+		//String Query
+		String query = "//employees/employee[firstName='Rajesh']/lastName/text()";
+		
+		//Generating XPathExpression out of String query 
+		XPathExpression expression = xPath.compile(query);
+		
+		//Evaluating XPathExpression to get NodeList/NodeSet
+		NodeList nodeList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
+		
+		for(int i= 0 ; i < nodeList.getLength() ; i++)
+		{
+			 System.out.println(nodeList.item(i).getNodeValue());
+		}
+		
+		//Modified query to get count of instances
+		query = "count(//employees/employee[firstName='Rajesh']/lastName/text())";
+
+		//Generating XPathExpression out of Modified String query 
+		expression = xPath.compile(query);
+		
+		//Evaluating XPathExpression to get NodeList/NodeSet
+		Double count = (Double) expression.evaluate(document, XPathConstants.NUMBER);
+		System.out.println("Count = " + count);
+		
+		
+		//Re-Modified query to check if count of instances is more than 2
+		query = "count(//employees/employee[firstName='Rajesh']/lastName/text()) > 2";
+
+		//Generating XPathExpression out of Modified String query 
+		expression = xPath.compile(query);
+				
+		//Evaluating XPathExpression to get NodeList/NodeSet
+		Boolean result = (Boolean) expression.evaluate(document, XPathConstants.BOOLEAN);
+		System.out.println("Number of instance is more than 2 = " + result);		
+		
+		
+		
+		
+	}
+	
 
 	private void lineBreak(int count) throws XMLStreamException {
 		for (int i = 0; i < count; i++) {
