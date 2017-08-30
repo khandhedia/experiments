@@ -3,6 +3,13 @@
   <groupId>com.rnd</groupId>
   <artifactId>Experiments</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+    </dependencies>
   <name>Experiments</name>
   <description>Experiment Programs</description>
 </project>

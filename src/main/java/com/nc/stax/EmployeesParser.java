@@ -263,9 +263,6 @@ public class EmployeesParser {
 		Boolean result = (Boolean) expression.evaluate(document, XPathConstants.BOOLEAN);
 		System.out.println("Number of instance is more than 2 = " + result);		
 		
-		
-		
-		
 	}
 	
 
