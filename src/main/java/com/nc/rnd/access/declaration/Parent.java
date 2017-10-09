@@ -23,4 +23,9 @@ public class Parent
         }
     }
 
+    protected void method1()
+    {
+
+    }
+
 }

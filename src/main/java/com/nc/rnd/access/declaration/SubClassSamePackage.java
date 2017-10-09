@@ -15,4 +15,9 @@ public class SubClassSamePackage extends Parent
 
     }
 
+    @Override
+    public void method1()
+    {
+        super.method1();
+    }
 }

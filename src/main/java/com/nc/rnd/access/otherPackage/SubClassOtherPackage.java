@@ -14,4 +14,6 @@ public class SubClassOtherPackage extends Parent
         protectedInt = 20; //Protected variable is accessible outside package, as  the parent class is subclassed here
         publicInt = 30;
     }
+
+
 }
