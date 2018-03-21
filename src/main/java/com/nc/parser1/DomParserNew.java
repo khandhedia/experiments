@@ -18,7 +18,7 @@ public class DomParserNew {
 	public static void main(String[] args) {
 		
 		
-		String xmlPath = "d://Workspaces//NTT-Docomo//RnD-NC//src//com//nc//parser//employees.xml";
+		String xmlPath = "d://employees.xml";
 		try {
 			parseXml(xmlPath);
 		} catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {

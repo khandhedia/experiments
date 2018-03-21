@@ -33,3 +33,12 @@ class A extends ConstructorStaticBlockStaticMethodStaticVariable
         A a  = new A();
     }
 }
+
+/*
+
+Static Block Execution
+Anonymous block execution
+Constructor Execution
+Constructor for class A execution
+
+ */

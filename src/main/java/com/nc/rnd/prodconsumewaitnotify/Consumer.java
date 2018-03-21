@@ -36,7 +36,8 @@ public class Consumer implements Runnable{
             synchronized (list)
             {
                 try {
-                    list.wait(1000);
+                    System.out.println("Queue is empty - Waiting");
+                    list.wait(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -8,8 +8,8 @@ import java.util.Random;
  */
 public class Producer implements Runnable{
 
-    List<Integer> list;
-    int size;
+    private List<Integer> list;
+    private int size;
 
     public Producer(List<Integer> list, int size) {
         this.list = list;
@@ -38,7 +38,7 @@ public class Producer implements Runnable{
             synchronized (list) {
                 try {
                     System.out.println("Queue is full - Waiting");
-                    wait(1000);
+                    list.wait(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
