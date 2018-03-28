@@ -43,9 +43,10 @@ public class ListSort
         };
 
 
-        listString.sort((o1, o2) -> o1.compareTo(o2));
+        listString.sort(Comparator.naturalOrder());
 
-        listStudent.sort((o1, o2) -> o1.compareTo(o2));
+        listStudent.sort(Student::compareTo);
+        listStudent.sort(Comparator.naturalOrder());
 
         list.stream().forEach(System.out::println);
         listString.stream().forEach(System.out::println);

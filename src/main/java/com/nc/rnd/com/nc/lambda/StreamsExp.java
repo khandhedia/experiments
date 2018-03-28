@@ -4,7 +4,9 @@ import com.nc.rnd.generics.Car;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by nirk0816 on 4/3/2017.
@@ -26,6 +28,10 @@ public class StreamsExp {
             integerList2.add(g);
         });
 
+        ArrayList<Integer> collect = integerList.stream().map(integer -> integer * 3).collect(Collectors.toCollection(ArrayList::new));
+
         System.out.print(Arrays.asList(integerList2));
+
+        System.out.println(Collections.singletonList(collect));
     }
 }

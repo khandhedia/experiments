@@ -15,7 +15,7 @@ public class DistinctArrayElements {
         int a1[] = {3, 1, 2, 3, 3};
         int a2[] = {3, 4, 5, 6, 2, 7, 4};
 
-        System.out.println(distinctArrayElements.findDistict(a1, a2));
+        System.out.println("Count: " + distinctArrayElements.findDistict(a1, a2));
     }
 
     private int findDistict(int[] a1, int[] a2) {
@@ -23,7 +23,7 @@ public class DistinctArrayElements {
 
         for (int i = 0; i < a1.length; i++) {
             if (map.containsKey(a1[i])) {
-                Integer value = map.get(map.get(a1[i]));
+                Integer value = map.get(a1[i]);
                 value++;
                 map.put(a1[i], value);
             } else {
@@ -33,7 +33,7 @@ public class DistinctArrayElements {
 
         for (int i = 0; i < a2.length; i++) {
             if (map.containsKey(a2[i])) {
-                Integer value = map.get(map.get(a2[i]));
+                Integer value = map.get(a2[i]);
                 value++;
                 map.put(a2[i], value);
             } else {
@@ -45,12 +45,15 @@ public class DistinctArrayElements {
 
         int distinctCount = 0;
 
-        Iterator keySetItr = keySet.iterator();
+        Iterator<Integer> keySetItr = keySet.iterator();
+        System.out.println("Distinct  Numbers:");
         while(keySetItr.hasNext())
         {
-            Integer value = map.get(keySetItr.next());
+            Integer key = keySetItr.next();
+            Integer value = map.get(key);
             if(value == 1)
             {
+                System.out.println(key);
                 distinctCount++;
             }
         }

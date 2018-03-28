@@ -26,6 +26,11 @@ public class FindLinkedListMiddlePoint {
 
     private Integer find(LinkedList<Integer> linkedList)
     {
-        return  1;
+
+        int i = 0;
+        int j = 0;
+
+        return null;
+
     }
 }

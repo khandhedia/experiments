@@ -28,7 +28,7 @@ public class DomParser {
 		DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
 		
 		//Create object of Document by parsing the input XML - to be able to obtain the NodeList for traversal.
-		Document document = builder.parse("d://Workspaces//NTT-Docomo//RnD-NC//src//com//nc//parser//employees.xml");
+		Document document = builder.parse("D://employees.xml");
 		//ClassLoader.getSystemResourceAsStream("employees.xml")
 		
 		//Create object of NodeList from the Document object - to be able to identify individual nodes (items)

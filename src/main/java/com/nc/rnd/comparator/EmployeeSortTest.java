@@ -12,8 +12,8 @@ public class EmployeeSortTest {
 
     public static void main(String args[]) {
 
-        EmployeeEntity e1 = new EmployeeEntity(10, "Nirav", "RnD");
-        EmployeeEntity e2 = new EmployeeEntity(11, "Mirav", "RND2");
+        EmployeeEntity e1 = new EmployeeEntity(10, "Nirav", "abcd");
+        EmployeeEntity e2 = new EmployeeEntity(11, "Mirav", "efgh");
 
         List<EmployeeEntity> list = new ArrayList<>();
         list.add(e1);
