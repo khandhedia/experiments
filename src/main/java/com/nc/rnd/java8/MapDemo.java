@@ -1,14 +1,29 @@
 package com.nc.rnd.java8;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MapDemo {
 
     public static void main(String[] args) {
 
         StringToIntegerMap();
+        mapWithNullResponse();
+
+    }
+
+    private static void mapWithNullResponse() {
+
+        List<String> stringList = Arrays.asList("1", "2", "3", "4");
+        List<String> collect = stringList.stream().map(s -> timepass(s)).collect(Collectors.toList());
+        collect.removeIf(Objects::isNull);
+        collect.stream().forEach(System.out::println);
+
 
     }
 
@@ -28,17 +43,15 @@ public class MapDemo {
                         .orElse(0));
 
 
-/*
-        String peek: 11
-        integer Peek: 2
-        String peek: 21
-        integer Peek: 3
-        String peek: 31
-        integer Peek: 4
-        String peek: 41
-        integer Peek: 5
-        Max is : 4
-*/
+
+
+    }
+
+    private static String timepass(String s)
+    {
+        if(StringUtils.equalsIgnoreCase(s, "2"))
+            return null;
+        return StringUtils.capitalize(s);
     }
 
 }
