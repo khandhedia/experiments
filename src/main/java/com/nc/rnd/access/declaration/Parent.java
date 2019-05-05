@@ -5,13 +5,14 @@ package com.nc.rnd.access.declaration;
  */
 public class Parent
 {
-    int defaultInt;
 
-    private int privateInt;
+    private int privateInt; //only within this class
 
-    protected int protectedInt;
+    int defaultInt; //same package
 
-    public int publicInt;
+    protected int protectedInt; //same package OR  child class (in any package) or
+
+    public int publicInt; //anywhere
 
     class InnerParent{
         public void method()

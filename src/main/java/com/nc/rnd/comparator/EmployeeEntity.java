@@ -41,9 +41,12 @@ public class EmployeeEntity {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("EmployeeEntity{");
-        sb.append("age=").append(age);
-        sb.append(", name='").append(name).append('\'');
+
+        String str = "Age = " + age + "Name = " + name;
+
+        final StringBuffer sb = new StringBuffer(); // Threadsafe Nathi
+
+        sb.append("EmployeeEntity{").append("age=").append(age).append(", name='").append(name).append('\'');
         sb.append(", dept='").append(dept).append('\'');
         sb.append('}');
         return sb.toString();
@@ -68,5 +71,11 @@ public class EmployeeEntity {
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getDept() != null ? getDept().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println("Killing Employee Object: " + this);
     }
 }

@@ -8,17 +8,26 @@ public abstract class AbstractClass
     public AbstractClass()    {
         System.out.println("This is abstract class constructor");
     }
-}
 
-class A extends AbstractClass
-{
-    public A()
-    {
-        System.out.println("This is Concrete class constructor");
-    }
+    public void calculateSum(int a, int b) {
 
-    public static void main(String[] args)
-    {
-        A a = new A();
     }
 }
+
+
+// Abstract -> upar upar thi
+
+/*
+*
+* Bank Account -> depositMoneyInAccount()
+*
+* Saving Account = SMS after deposit
+*
+* Current Account = Send paper document after deposit
+*
+* Loan Account = Send an email after deposit
+*
+*
+*
+* */
+

@@ -3,7 +3,7 @@ package com.nc.parser1;
 public class Employee {
 
 	String id;
-	String firstName;
+	private String firstName;
 	String lastName;
 	String location;
 
@@ -12,4 +12,12 @@ public class Employee {
 		return firstName + " " + lastName + "(" + id + ")" + location;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+
+		this.firstName = firstName;
+	}
 }

@@ -49,6 +49,9 @@ public class JsonToJavaParser {
         List<Data1> response = objectMapper.readValue(payload1, objectMapper.getTypeFactory().constructCollectionType(
                 List.class, Data1.class));
 
+
+        Data1 data1 = objectMapper.readValue(payload1, Data1.class);
+
         response.stream().forEachOrdered(System.out::println);
         System.out.println(response);
 

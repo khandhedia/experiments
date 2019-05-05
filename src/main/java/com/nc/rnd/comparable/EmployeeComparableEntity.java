@@ -5,6 +5,8 @@ package com.nc.rnd.comparable;
  */
 public class EmployeeComparableEntity implements Comparable{
 
+    //You call me
+
     private int age;
     private String name;
     private String dept;
@@ -70,11 +72,14 @@ public class EmployeeComparableEntity implements Comparable{
         return result;
     }
 
+
     @Override
     public int compareTo(Object o) {
         if (o instanceof EmployeeComparableEntity) {
             EmployeeComparableEntity e = (EmployeeComparableEntity) o;
-            return this.getAge()- e.getAge();
+
+            return this.getName().compareTo(e.getName());
+//            return this.getAge() - e.getAge();
         } else
             return 0;
     }

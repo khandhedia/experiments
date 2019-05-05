@@ -16,6 +16,9 @@ import org.xml.sax.SAXException;
 public class DomParserNew {
 	
 	public static void main(String[] args) {
+
+		Employee employee = new Employee();
+		employee.setFirstName("nirav");
 		
 		
 		String xmlPath = "d://employees.xml";

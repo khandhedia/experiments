@@ -21,7 +21,17 @@ public class EmployeeSortTest {
 
         System.out.println("\nSorting using Name \n");
 
-        Collections.sort(list,new EmployeeComparatorUsingName());
+        EmployeeComparatorUsingName comparator = new EmployeeComparatorUsingName();
+        Collections.sort(list, comparator);
+
+        System.out.println(list);
+
+        for(int i = 0 ; i < list.size() ; i++) {
+            EmployeeEntity employeeEntity = list.get(i);
+            System.out.println("Hi " + employeeEntity);
+        }
+
+
 
         Iterator itr = list.iterator();
         while (itr.hasNext())
