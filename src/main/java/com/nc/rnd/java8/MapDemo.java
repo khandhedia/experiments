@@ -21,7 +21,10 @@ public class MapDemo {
 
         List<String> stringList = Arrays.asList("1", "2", "3", "4");
         List<String> collect = stringList.stream().map(s -> timepass(s)).collect(Collectors.toList());
+        System.out.println("Before Null Removal");
+        collect.stream().forEach(System.out::println);
         collect.removeIf(Objects::isNull);
+        System.out.println("After Removal of null objects");
         collect.stream().forEach(System.out::println);
 
 
